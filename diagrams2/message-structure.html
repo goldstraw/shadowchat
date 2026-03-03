@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ShadowChat Message Structure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
   body {
     background: #ffffff;
@@ -12,7 +15,7 @@
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    font-family: 'Segoe Print', 'Comic Sans MS', 'Patrick Hand', cursive;
+    font-family: 'Kalam', cursive;
   }
 
   svg {
@@ -20,7 +23,7 @@
   }
 
   text {
-    font-family: 'Segoe Print', 'Comic Sans MS', 'Patrick Hand', cursive;
+    font-family: 'Kalam', cursive;
     fill: #1e1e1e;
   }
 </style>
@@ -42,31 +45,32 @@
         style="filter: url(#rough);" />
 
   <!-- Label: Message -->
-  <text x="410" y="22" text-anchor="middle" font-size="18" font-weight="bold">Message Block Pair</text>
+  <text x="410" y="22" text-anchor="middle" font-size="27" font-weight="bold">ShadowChat Message Structure</text>
 
   <!-- Envelope header section -->
   <rect x="30" y="60" width="50" height="200" rx="2"
         fill="#f0e6ff" stroke="#1e1e1e" stroke-width="1.5" />
-  <text x="55" y="165" text-anchor="middle" font-size="12" font-weight="bold" transform="rotate(-90, 55, 165)">Header</text>
+  <text x="55" y="165" text-anchor="middle" font-size="18" font-weight="bold" transform="rotate(-90, 55, 165)">Header</text>
 
   <!-- Regular block -->
   <rect x="100" y="60" width="335" height="200" rx="2"
         fill="#dff0d8" stroke="#1e1e1e" stroke-width="1.5" />
-  <text x="267" y="165" text-anchor="middle" font-size="15" font-weight="bold">Regular Encrypted Block</text>
+  <text x="267" y="165" text-anchor="middle" font-size="23" font-weight="bold">Regular Encrypted Block</text>
 
   <!-- Hidden block -->
   <rect x="455" y="60" width="335" height="200" rx="2"
         fill="url(#diag-stripes)" stroke="#1e1e1e" stroke-width="1.5" stroke-dasharray="8 4" />
-  <text x="622" y="165" text-anchor="middle" font-size="15" font-weight="bold">Random Noise</text>
+  <text x="622" y="165" text-anchor="middle" font-size="23" font-weight="bold">Random Noise</text>
 
   <!-- Curved arrow from the right pointing into the hidden block -->
   <path d="M 930,180 C 870,180 830,170 795,160"
         fill="none" stroke="#1e1e1e" stroke-width="1.5" marker-end="url(#arrowhead)" />
-  <text x="940" y="170" text-anchor="start" font-size="15" font-style="italic" fill="#555">Indistinguishable from</text>
-  <text x="940" y="190" text-anchor="start" font-size="15" font-style="italic" fill="#555">an encrypted block</text>
+  <text x="940" y="170" text-anchor="start" font-size="23" font-style="italic" fill="#555">Indistinguishable from</text>
+  <text x="940" y="190" text-anchor="start" font-size="23" font-style="italic" fill="#555">an encrypted block,</text>
+  <text x="940" y="215" text-anchor="start" font-size="23" font-style="italic" fill="#555">and always sent</text>
 
   <!-- Size annotation -->
-  <text x="410" y="305" text-anchor="middle" font-size="12" fill="#888">Both blocks are always the same fixed size — existence of hidden layer is unprovable</text>
+  <text x="410" y="310" text-anchor="middle" font-size="18" fill="#888">Both blocks are always the same fixed size — existence of hidden layer is unprovable</text>
 </svg>
 </body>
 </html>
