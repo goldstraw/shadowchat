@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1160" height="320" viewBox="0 -10 1160 330">
-  <rect width="100%" height="100%" fill="#ffffff" />
+  <rect x="0" y="-10" width="1160" height="330" fill="#ffffff" />
   <defs>
     <style>
       @font-face {
