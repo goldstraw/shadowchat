@@ -48,45 +48,45 @@
   <!-- TOP: The problem — no block sizes -->
   <!-- ============================================================ -->
 
-  <text x="480" y="30" text-anchor="middle" font-size="27" font-weight="bold">The Problem: Without Block Sizes</text>
+  <text x="480" y="30" text-anchor="middle" font-size="29.7" font-weight="bold">The Problem: Without Block Sizes</text>
 
   <!-- Regular block — small, fits content tightly -->
   <rect x="30" y="60" width="200" height="120" rx="2"
         fill="#dff0d8" stroke="#1e1e1e" stroke-width="1.5" />
-  <text x="130" y="82" text-anchor="middle" font-size="16" font-weight="bold">Regular Block</text>
+  <text x="130" y="82" text-anchor="middle" font-size="21.6" font-weight="bold">Regular Block</text>
 
   <rect x="45" y="92" width="170" height="75" rx="2"
         fill="#a8d0a0" stroke="#1e1e1e" stroke-width="1" />
-  <text x="130" y="135" text-anchor="middle" font-size="14">"Hi"</text>
+  <text x="130" y="135" text-anchor="middle" font-size="21">"Hi"</text>
 
   <!-- Hidden block — much larger -->
   <rect x="260" y="60" width="200" height="280" rx="2"
         fill="url(#diag-stripes)" stroke="#1e1e1e" stroke-width="1.5" stroke-dasharray="8 4" />
-  <text x="360" y="82" text-anchor="middle" font-size="16" font-weight="bold">Hidden Block</text>
+  <text x="360" y="82" text-anchor="middle" font-size="21.6" font-weight="bold">Hidden Block</text>
 
   <rect x="275" y="92" width="170" height="235" rx="2"
         fill="#e8d898" stroke="#1e1e1e" stroke-width="1" />
-  <text x="360" y="200" text-anchor="middle" font-size="14">"Meet at the..."</text>
+  <text x="360" y="200" text-anchor="middle" font-size="21">"Meet at the..."</text>
 
   <!-- Size comparison arrows -->
-  <line x1="30" y1="195" x2="30" y2="60" stroke="#c0392b" stroke-width="2" marker-end="url(#arrowhead)" />
-  <line x1="30" y1="195" x2="30" y2="180" stroke="#c0392b" stroke-width="2" />
-  <text x="18" y="140" text-anchor="middle" font-size="12" fill="#c0392b" transform="rotate(-90, 18, 140)">120</text>
+  <line x1="18" y1="180" x2="18" y2="60" stroke="#c0392b" stroke-width="2" marker-end="url(#arrowhead)" />
+  <line x1="18" y1="180" x2="18" y2="180" stroke="#c0392b" stroke-width="2" />
+  <text x="6" y="140" text-anchor="middle" font-size="18" fill="#c0392b" transform="rotate(-90, 6, 140)">50</text>
 
-  <line x1="472" y1="350" x2="472" y2="60" stroke="#c0392b" stroke-width="2" marker-end="url(#arrowhead)" />
-  <line x1="472" y1="350" x2="472" y2="340" stroke="#c0392b" stroke-width="2" />
-  <text x="484" y="210" text-anchor="middle" font-size="12" fill="#c0392b" transform="rotate(-90, 484, 210)">280</text>
+  <line x1="472" y1="340" x2="472" y2="60" stroke="#c0392b" stroke-width="2" marker-end="url(#arrowhead)" />
+  <line x1="472" y1="340" x2="472" y2="340" stroke="#c0392b" stroke-width="2" />
+  <text x="489" y="210" text-anchor="middle" font-size="18" fill="#c0392b" transform="rotate(-90, 489, 210)">230</text>
 
   <!-- Big red X -->
-  <text x="570" y="140" font-size="60" fill="#c0392b" font-weight="bold">X</text>
+  <text x="570" y="140" font-size="90" fill="#c0392b" font-weight="bold">X</text>
 
   <!-- Explanation -->
-  <text x="650" y="100" text-anchor="start" font-size="18" fill="#c0392b" font-weight="bold">Sizes don't match!</text>
-  <text x="650" y="130" text-anchor="start" font-size="15" fill="#555">An attacker sees a tiny regular block</text>
-  <text x="650" y="155" text-anchor="start" font-size="15" fill="#555">paired with a large "noise" block.</text>
-  <text x="650" y="195" text-anchor="start" font-size="15" fill="#555">That's suspicious — real noise</text>
-  <text x="650" y="220" text-anchor="start" font-size="15" fill="#555">wouldn't need that much space.</text>
-  <text x="650" y="260" text-anchor="start" font-size="16" fill="#c0392b" font-weight="bold">Hidden layer existence leaked.</text>
+  <text x="675" y="100" text-anchor="start" font-size="27" fill="#c0392b" font-weight="bold">Sizes don't match!</text>
+  <text x="675" y="130" text-anchor="start" font-size="22.5" fill="#555">An attacker sees a tiny regular block</text>
+  <text x="675" y="155" text-anchor="start" font-size="22.5" fill="#555">paired with a large "noise" block.</text>
+  <text x="675" y="195" text-anchor="start" font-size="22.5" fill="#555">That's suspicious — real noise</text>
+  <text x="675" y="220" text-anchor="start" font-size="22.5" fill="#555">wouldn't need that much space.</text>
+  <text x="675" y="260" text-anchor="start" font-size="24" fill="#c0392b" font-weight="bold">Hidden layer existence leaked.</text>
 
   <!-- Divider -->
   <line x1="30" y1="380" x2="1020" y2="380" stroke="#ccc" stroke-width="1.5" stroke-dasharray="8 4" />
@@ -95,54 +95,54 @@
   <!-- BOTTOM: The solution — fixed block sizes -->
   <!-- ============================================================ -->
 
-  <text x="480" y="420" text-anchor="middle" font-size="27" font-weight="bold">The Solution: Fixed Block Sizes</text>
+  <text x="480" y="420" text-anchor="middle" font-size="29.7" font-weight="bold">The Solution: Fixed Block Sizes</text>
 
   <!-- Regular block — padded to block size -->
   <rect x="30" y="450" width="200" height="220" rx="2"
         fill="#dff0d8" stroke="#1e1e1e" stroke-width="1.5" />
-  <text x="130" y="472" text-anchor="middle" font-size="16" font-weight="bold">Regular Block</text>
+  <text x="130" y="472" text-anchor="middle" font-size="21.6" font-weight="bold">Regular Block</text>
 
   <rect x="45" y="482" width="170" height="60" rx="2"
         fill="#a8d0a0" stroke="#1e1e1e" stroke-width="1" />
-  <text x="130" y="518" text-anchor="middle" font-size="14">"Hi"</text>
+  <text x="130" y="518" text-anchor="middle" font-size="21">"Hi"</text>
 
   <rect x="45" y="552" width="170" height="105" rx="2"
         fill="url(#noise-dots)" stroke="#1e1e1e" stroke-width="1" />
-  <text x="130" y="610" text-anchor="middle" font-size="13">Random Padding</text>
+  <text x="130" y="610" text-anchor="middle" font-size="19.5">Random Padding</text>
 
   <!-- Hidden block — same block size -->
   <rect x="260" y="450" width="200" height="220" rx="2"
         fill="url(#diag-stripes)" stroke="#1e1e1e" stroke-width="1.5" stroke-dasharray="8 4" />
-  <text x="360" y="472" text-anchor="middle" font-size="16" font-weight="bold">Hidden Block</text>
+  <text x="360" y="472" text-anchor="middle" font-size="21.6" font-weight="bold">Hidden Block</text>
 
   <rect x="275" y="482" width="170" height="130" rx="2"
         fill="#e8d898" stroke="#1e1e1e" stroke-width="1" />
-  <text x="360" y="552" text-anchor="middle" font-size="14">"Meet at the..."</text>
+  <text x="360" y="552" text-anchor="middle" font-size="21">"Meet at the..."</text>
 
   <rect x="275" y="622" width="170" height="35" rx="2"
         fill="url(#noise-dots)" stroke="#1e1e1e" stroke-width="1" />
-  <text x="360" y="644" text-anchor="middle" font-size="11">Padding</text>
+  <text x="360" y="644" text-anchor="middle" font-size="16.5">Random Padding</text>
 
   <!-- Equals sign -->
-  <text x="240" y="570" text-anchor="middle" font-size="30" fill="#27ae60">=</text>
+  <text x="240" y="570" text-anchor="middle" font-size="45" fill="#27ae60">=</text>
 
   <!-- Block size bracket -->
   <line x1="472" y1="450" x2="480" y2="450" stroke="#27ae60" stroke-width="2" />
   <line x1="480" y1="450" x2="480" y2="670" stroke="#27ae60" stroke-width="2" />
   <line x1="472" y1="670" x2="480" y2="670" stroke="#27ae60" stroke-width="2" />
-  <text x="495" y="565" text-anchor="start" font-size="14" fill="#27ae60" font-weight="bold">1024 bytes</text>
+  <text x="495" y="565" text-anchor="start" font-size="21" fill="#27ae60" font-weight="bold">256 bytes</text>
 
   <!-- Checkmark -->
-  <text x="570" y="510" font-size="50" fill="#27ae60" font-weight="bold">&#10003;</text>
+  <text x="570" y="510" font-size="75" fill="#27ae60" font-weight="bold">&#10003;</text>
 
   <!-- Explanation -->
-  <text x="630" y="490" text-anchor="start" font-size="18" fill="#27ae60" font-weight="bold">Same size — no leak!</text>
-  <text x="630" y="520" text-anchor="start" font-size="15" fill="#555">Both blocks padded to nearest</text>
-  <text x="630" y="545" text-anchor="start" font-size="15" fill="#555">block size (256, 1024, 8192...)</text>
-  <text x="630" y="585" text-anchor="start" font-size="15" fill="#555">A short "Hi" with lots of padding</text>
-  <text x="630" y="610" text-anchor="start" font-size="15" fill="#555">looks normal — the block size</text>
-  <text x="630" y="635" text-anchor="start" font-size="15" fill="#555">explains the extra space.</text>
-  <text x="630" y="675" text-anchor="start" font-size="16" fill="#27ae60" font-weight="bold">Hidden layer remains unprovable.</text>
+  <text x="655" y="490" text-anchor="start" font-size="27" fill="#27ae60" font-weight="bold">Same size — no leak!</text>
+  <text x="655" y="520" text-anchor="start" font-size="22.5" fill="#555">Both blocks padded to nearest</text>
+  <text x="655" y="545" text-anchor="start" font-size="22.5" fill="#555">block size (256, 1024, 8192...)</text>
+  <text x="655" y="585" text-anchor="start" font-size="22.5" fill="#555">A short "Hi" with lots of padding</text>
+  <text x="655" y="610" text-anchor="start" font-size="22.5" fill="#555">looks normal — the block size</text>
+  <text x="655" y="635" text-anchor="start" font-size="22.5" fill="#555">explains the extra space.</text>
+  <text x="655" y="675" text-anchor="start" font-size="24" fill="#27ae60" font-weight="bold">Hidden layer remains unprovable.</text>
 </svg>
 </body>
 </html>
