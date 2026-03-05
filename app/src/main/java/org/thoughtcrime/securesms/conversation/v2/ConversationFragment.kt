@@ -2128,12 +2128,17 @@ class ConversationFragment :
   }
 
   private fun updateShadowChatComposeInputState() {
+    val hasHiddenPassword = shadowChatHiddenPassword != null && shadowChatHiddenPassword!!.isNotEmpty()
+
     shadowChatRegularMessageText.visibility = if (isShadowChatEnabled) View.VISIBLE else View.GONE
-    composeText.setComposeHintOverride(if (isShadowChatEnabled) getString(R.string.ConversationFragment__shadow_message_hint) else null)
 
     if (isShadowChatEnabled) {
+      composeText.visibility = if (hasHiddenPassword) View.VISIBLE else View.GONE
+      composeText.setComposeHintOverride(if (hasHiddenPassword) getString(R.string.ConversationFragment__shadow_message_hint) else null)
       shadowChatRegularMessageText.requestFocus()
     } else {
+      composeText.visibility = View.VISIBLE
+      composeText.setComposeHintOverride(null)
       shadowChatRegularMessageText.setText("")
       composeText.requestFocus()
     }
