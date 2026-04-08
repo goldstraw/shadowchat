@@ -1,8 +1,12 @@
 # ShadowChat
 
-**Plausibly deniable encrypted messaging**, inspired by VeraCrypt's hidden volumes — built on top of Signal.
+A design for an extortion-proof messaging algorithm, inspired by VeraCrypt's hidden volumes — built on top of Signal.
 
-ShadowChat adds a dual-layer encryption scheme to Signal messages. A **regular layer** carries everyday conversation, while an optional **hidden layer** carries sensitive content. The system is designed so that it is fundamentally impossible to prove whether a hidden layer exists.
+ShadowChat adds password protection to Signal messages. When ShadowChat mode is enabled, messages will be encrypted with a chosen password, adding a layer of protection to Signal.
+
+ShadowChat has an optional feature to enable extortion-proof messaging. Both VeraCrypt and ShadowChat work on the same principle: a plausibly deniable hidden layer.
+
+A **regular layer** carries everyday conversation, while an optional **hidden layer** carries sensitive content. The system is designed so that it is impossible to prove whether a hidden layer exists in a given conversation.
 
 > This project is not associated with the Signal Technology Foundation, or Signal in any way.
 
@@ -32,45 +36,23 @@ ShadowChat leverages Signal to establish secure message delivery channels. The m
 
 ## Cryptographic Design
 
-### Encryption Model
-
-Password-based encryption is used rather than public-key cryptography. This means no decryption keys exist on the device — an attacker with full access to the host machine still cannot decrypt messages without knowing the passwords.
-
-| Component | Choice |
-|---|---|
-| **Key Derivation** | Argon2id (memory-hard, side-channel resistant) |
-| **Authenticated Encryption** | XChaCha20-Poly1305 (AEAD) |
-| **Salt** | 16-byte random per message |
-| **Nonce** | 24-byte random per block |
-
-Keys are derived with Argon2id using the per-message salt and a layer-specific label (`shadowchat:v1:block:regular` or `shadowchat:v1:block:hidden`) for domain separation. The AEAD's additional authenticated data (AAD) binds ciphertext to both the envelope header and the intended layer.
-
-### Security Properties
-
-- **Confidentiality** — XChaCha20-Poly1305 with Argon2id KDF
-- **Hidden layer deniability** — No way to distinguish whether a hidden layer exists, even with access to the host machine
-- **Compromise resistance** — Password-based key derivation; no keys stored on disk
-- **Transit security** — Messages in transit are additionally protected by Signal's protocol
-
-> **Note:** Forward secrecy is not applicable in this model. Password-based encryption means that knowledge of the password can decrypt past messages if the ciphertext is available.
-
 ### Message Structure
 
-Each message is a Base64-encoded envelope containing an unencrypted header followed by a block pair (regular block + hidden block):
+#### Regular-only messages
+Each message is a Base64-encoded envelope containing an unencrypted header followed by a block pair (regular block + hidden block).
+
+In the case where only one password is used, the regular block is used to store the encrypted contents of the message. This is paired with an identically sized hidden layer, which is formed of encrypted random noise.
+
+Regardless of whether the hidden layer functionality is used, this additional layer is always sent, making it indistinguishable from messages using the hidden layer.
 
 <p align="center">
   <img src="diagrams/message-structure.svg" alt="Message structure diagram" width="700">
 </p>
 
-The **envelope header** (20 bytes, unencrypted) contains:
-- Magic bytes (`SC`) — 2 bytes
-- Protocol version — 2 bytes
-- Per-message salt — 16 bytes
+#### Extortion-proof mode
 
-Each **block** contains:
-- 24-byte nonce
-- Ciphertext (same length as plaintext block size)
-- 16-byte authentication tag
+When two passwords are used, the user types two messages, which are encrypted with the regular password and hidden password respectively. Both of the messages are sent together, and are padded to be the exact same size. The image below shows how this looks in practice:
+
 
 <p align="center">
   <img src="diagrams/block-detail.svg" alt="Block detail diagram" width="700">
@@ -78,17 +60,9 @@ Each **block** contains:
 
 ### Block Sizes
 
-To prevent message size from revealing the existence of a hidden layer, every message contains both a regular block and a hidden block of the **same size**. Block sizes scale in tiers:
+To prevent message size from revealing the existence of a hidden layer, every message contains both a regular block and a hidden block of the **same size**.
 
-| Tier | Block Size |
-|---|---|
-| 1 | 256 bytes |
-| 2 | 1,024 bytes |
-| 3 | 8,192 bytes |
-| 4 | 65,536 bytes |
-| 5 | 524,288 bytes |
-
-The smallest block size that can accommodate the content (plaintext + 4-byte payload header) is selected. When a hidden message is present, the decoy message must be large enough to require the same block tier — this is enforced by validation. Unused space within a block is filled with random noise, which is indistinguishable from encrypted content.
+The smallest block size that can accommodate the regular message is selected. When a hidden message is present, the regular message must require either the same block tier or larger, which is enforced by client-side validation. This ensures that longer hidden messages do not expose the existence of the hidden layer (see image below). Unused space within a block is filled with random noise, which is indistinguishable from encrypted content.
 
 <p align="center">
   <img src="diagrams/why-block-sizes.svg" alt="Why block sizes diagram" width="700">
